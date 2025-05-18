@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #566885;
+}
+
+body {
+  background-color: #1f1e1e;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+#root {
+    --mobile-breakpoint: 768px;
+  --tablet-breakpoint: 1024px;
+  width: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    
+} 
+
+.wrap {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: url("../public/img/bg_home.jpg") no-repeat center center / cover;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  
+}

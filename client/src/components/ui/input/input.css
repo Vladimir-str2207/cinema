@@ -1,0 +1,27 @@
+input {
+  border: none;
+  border-bottom: #566885 solid 3px;
+  background: white;
+  width: 100%;
+  padding: 10px;
+}
+input:focus {
+  outline: none;
+  transform: scale(1.01);
+}
+::-webkit-input-placeholder {
+  color: #566885;
+  font-weight: 700;
+}
+:-ms-input-placeholder {
+  color: #566885;
+  font-weight: 700;
+}
+::-moz-placeholder {
+  color: #566885;
+  font-weight: 700;
+}
+:-moz-placeholder {
+  color: #566885;
+  font-weight: 700;
+}

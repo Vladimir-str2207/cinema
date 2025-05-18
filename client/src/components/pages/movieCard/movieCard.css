@@ -1,0 +1,27 @@
+.movie_card {
+  cursor: pointer;
+  transition: transform 0.2s;
+  width: 250px;
+}
+
+.movie_card:hover {
+  transform: scale(1.05);
+}
+
+.movie_card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.movie_card__title {
+  margin-top: 8px;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .movie-card__info {
+    padding: 10px;
+  }
+}

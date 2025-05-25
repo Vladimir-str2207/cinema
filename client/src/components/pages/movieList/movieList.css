@@ -24,6 +24,7 @@
 
 @media (max-width: 480px) {
   .movieList__list {
+    margin-top: 70px;
     grid-template-columns: 1fr;
   }
 }

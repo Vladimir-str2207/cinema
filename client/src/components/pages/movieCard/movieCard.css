@@ -4,6 +4,17 @@
   width: 250px;
 }
 
+@media (max-width: 530px) {
+.movie_card {
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 0 20px;
+  width: 390px;
+  grid-template-columns: 1fr;
+}
+
+}
+
 .movie_card:hover {
   transform: scale(1.05);
 }

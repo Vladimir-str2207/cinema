@@ -15,10 +15,10 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
-    if (searchTimeout != false) {
+    if (searchTimeout !== false) {
       clearTimeout(searchTimeout);
     }
-    if (e.target.value != "") {
+    if (e.target.value !== "") {
       setSearchTimeout(
         setTimeout(
           (value) => {
@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="container">
-        <NavLink to="/" className="navbar__header">
+        <NavLink to="/" className="navbar__logo">
           FILMOPOISK
         </NavLink>
 
@@ -46,9 +46,10 @@ const Navbar = () => {
             onChange={(e) => handleSearch(e)}
             className="navbar__search"
             type="text"
-            placeholder="Название файла..."
+            placeholder="Название фильма..."
           />
         )}
+        <div className="navbar__auth">
         {!isAuth && (
           <div className="navbar__login">
             <NavLink to="/">Войти</NavLink>
@@ -60,11 +61,14 @@ const Navbar = () => {
             <NavLink to="/registration">Регистрация</NavLink>
           </div>
         )}
-        {isAuth && (
+                {isAuth && (
           <div className="navbar__login" onClick={() => dispatch(logout())}>
             Выход
           </div>
         )}
+        </div>
+
+
       </div>
     </div>
   );

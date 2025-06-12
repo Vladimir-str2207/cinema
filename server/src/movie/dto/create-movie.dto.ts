@@ -5,7 +5,9 @@ import {
   IsNumber,
   IsString,
   Length,
+  Max,
   MaxLength,
+  Min,
   MinLength,
 } from 'class-validator';
 
@@ -25,8 +27,8 @@ export class CreateMovieDto {
 
   @ApiProperty({ type: Number, description: 'Год выпуска', example: 2023 })
   @IsNumber()
-  @MinLength(2)
-  @MaxLength(4)
+  @Min(1900) 
+  @Max(2025) 
   year: number;
 
   @ApiProperty({
@@ -35,8 +37,8 @@ export class CreateMovieDto {
     example: 120,
   })
   @IsNumber()
-  @MinLength(2)
-  @MaxLength(3)
+  @Min(1) 
+  @Max(999) 
   duration: number;
 
   @ApiProperty({

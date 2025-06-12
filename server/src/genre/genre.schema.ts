@@ -5,7 +5,7 @@ export type GenreDocument = HydratedDocument<Genre>;
 
 @Schema()
 export class Genre {
-  @Prop({ unique: true })
+  @Prop({ unique: true, index: true })
   genre: string;
 }
 

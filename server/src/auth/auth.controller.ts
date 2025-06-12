@@ -20,19 +20,6 @@ import { AccessGuard } from './guards/access.guard';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  // @Public()
-  // @Post('login')
-  // @ApiBody({ type: [CreateAuthDto] })
-  // async signIn(@Body() createAuthDto: CreateAuthDto) {
-  //   const user = await this.authService.signIn(createAuthDto);
-  //   const token = this.authService.generateToken(
-  //     user.id,
-  //     user.email,
-  //     user.roles,
-  //   );
-  //   return token;
-  // }
-
   @Public()
   @Post('login')
   @ApiBody({ type: [CreateAuthDto] })
@@ -43,14 +30,14 @@ export class AuthController {
       user.email,
       user.roles,
     );
-    
-    return { token, user }; // Возвращаем токен и данные пользователя
+
+    return { token, user };
   }
 
-  @Get('user') // Новый маршрут для проверки токена
-  @UseGuards(AccessGuard) // Защита маршрута с помощью guard
+  @Get('user')
+  @UseGuards(AccessGuard)
   async getUser(@Req() req: Request & { user: UserDocument }) {
-    return req.user; // Возвращаем данные пользователя из токена
+    return req.user;
   }
 
   @Public()

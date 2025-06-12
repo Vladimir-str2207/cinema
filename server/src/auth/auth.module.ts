@@ -16,6 +16,7 @@ import { DirectorService } from 'src/director/director.service';
 import { MailService } from 'src/mail/mail.service';
 import { Playlist, PlaylistSchema } from 'src/playlist/playlist.schema';
 import { MailConfigService } from 'src/mail/mail.constants';
+import { Genre, GenreSchema } from 'src/genre/genre.schema';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { MailConfigService } from 'src/mail/mail.constants';
       { name: User.name, schema: UserSchema },
       { name: Movie.name, schema: MovieSchema },
       { name: Director.name, schema: DirectorSchema },
+      { name: Genre.name, schema: GenreSchema },
       { name: Playlist.name, schema: PlaylistSchema },
     ]),
     PassportModule,

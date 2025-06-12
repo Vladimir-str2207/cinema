@@ -22,7 +22,7 @@ export class MovieService {
 
   async findAll(): Promise<Movie[] | string[]> {
 
-      let movies = await this.movieModel.find().populate('genre director');;
+      let movies = await this.movieModel.find().populate('genre director');
 
       return movies;
     
@@ -38,21 +38,21 @@ export class MovieService {
     }).exec();
   }
 
-  // async findAll(user?: UserDocument): Promise<Movie[] | string[]> {
-  //   let movies;
-  //   if (myCache.has('movies')) {
-  //     movies = myCache.get('movies') as Movie[];
-  //   } else {
-  //     movies = await this.movieModel.find().exec();
-  //     myCache.set('movies', movies);
-  //   }
-  //   if (user) {
-  //     return movies;
-  //   }
-  //   return movies.map((movie) => {
-  //     return movie.title;
-  //   });
-  // }
+  async findAllUser(user?: UserDocument): Promise<Movie[] | string[]> {
+    let movies;
+    if (myCache.has('movies')) {
+      movies = myCache.get('movies') as Movie[];
+    } else {
+      movies = await this.movieModel.find().exec();
+      myCache.set('movies', movies);
+    }
+    if (user) {
+      return movies;
+    }
+    return movies.map((movie) => {
+      return movie.title;
+    });
+  }
 
   async findOne(id: string, user?: UserDocument): Promise<Movie | null> {
     if (user) {

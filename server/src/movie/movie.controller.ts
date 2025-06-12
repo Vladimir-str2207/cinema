@@ -53,29 +53,29 @@ export class MovieController {
     return this.movieService.create(createMovieDto);
   }
 
-  // @Get('export')
-  // @ApiBearerAuth()
-  // @Roles(Role.Admin)
-  // @UseGuards(AccessGuard)
-  // async exportMoviesJson(
-  //   @Req() req: Request & { user: UserDocument },
-  //   @Res() response: Response,
-  // ) {
-  //   const { user } = req;
-  //   const movies = await this.movieService.findAll(user);
-  //   const fileName = 'movies.json';
+  @Get('export')
+  @ApiBearerAuth()
+  @Roles(Role.Admin)
+  @UseGuards(AccessGuard)
+  async exportMoviesJson(
+    @Req() req: Request & { user: UserDocument },
+    @Res() response: Response,
+  ) {
+    const { user } = req;
+    const movies = await this.movieService.findAllUser(user);
+    const fileName = 'movies.json';
 
-  //   const films = JSON.stringify(movies);
+    const films = JSON.stringify(movies);
 
-  //   await fs.promises.writeFile(fileName, films, 'utf8');
-  //   const filePath = path.join(__dirname, '../../', fileName);
-  //   response.setHeader('Content-Type', 'application/octet-stream');
-  //   response.setHeader(
-  //     'Content-Disposition',
-  //     `attachment; filename=${fileName}`,
-  //   );
-  //   response.sendFile(filePath);
-  // }
+    await fs.promises.writeFile(fileName, films, 'utf8');
+    const filePath = path.join(__dirname, '../../', fileName);
+    response.setHeader('Content-Type', 'application/octet-stream');
+    response.setHeader(
+      'Content-Disposition',
+      `attachment; filename=${fileName}`,
+    );
+    response.sendFile(filePath);
+  }
 
 
   @Get('films')

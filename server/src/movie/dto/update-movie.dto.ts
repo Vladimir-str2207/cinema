@@ -21,14 +21,14 @@ export class UpdateMovieDto extends PartialType(CreateMovieDto) {
 
   @ApiProperty({ type: Number })
   @IsNumber()
-  @MinLength(2)
-  @MaxLength(4)
+  @Min(1900)
+  @Max(2025)
   year?: number;
 
   @ApiProperty({ type: Number })
   @IsNumber()
-  @MinLength(2)
-  @MaxLength(3)
+  @Min(1)
+  @Max(999)
   duration?: number;
 
   @ApiProperty({ type: [String] })

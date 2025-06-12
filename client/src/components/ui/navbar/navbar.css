@@ -54,11 +54,11 @@
   align-items: center;
   justify-content: space-between;
 }
-.navbar__link:hover {
+/* .navbar__link:hover {
   color: #f0c14b;
-}
+} */
 
-.navbar__admin-link {
+/* .navbar__admin-link {
   background-color: #d9534f;
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -67,7 +67,7 @@
 .navbar__admin-link:hover {
   background-color: #c9302c;
   color: white;
-}
+} */
 .navbar__search {
   background-color: hsl(30, 1%, 30%, 0.4);
   width: 200px;
@@ -75,4 +75,8 @@
   display: block;
   font-weight: 700;
   font-size: 15px;
+}
+.navbar__admin{
+  margin-right: 20px;
+  text-decoration: none
 }

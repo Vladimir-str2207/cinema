@@ -1,4 +1,3 @@
-import env from "react-dotenv";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -38,3 +37,17 @@ export const searchMovies = createAsyncThunk(
     }
   }
 );
+
+export const addMovie = (title, year, duration,genre,director,reviews,poster_path,video_path,description) => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_URL}/movie`,
+      { title, year, duration,genre,director,reviews,poster_path,video_path,description},
+      {headers: { Authorization: `Bearer ${token}` }}
+    );
+    alert( "Фильм успещно добавлен");
+  } catch (e) {
+    alert(e.response.data.message);
+  }
+};

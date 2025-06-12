@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchMovies, searchMovies } from "../actions/film";
+import { addMovie, fetchMovies, searchMovies } from "../actions/film";
 
 const initialState = {
   movies: [],
@@ -44,7 +44,10 @@ const filmsSlice = createSlice({
       .addCase(searchMovies.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      });
+      })
+      // .addCase(addMovie.fulfilled, (state, action) => {
+      //  state.movies = action.payload;
+      // })
   },
 });
 

@@ -36,12 +36,15 @@ import { auth } from '../actions/user';
 const initialState = {
   currentUser: null,
   isAuth: false,
+  isAdmin: false,
   token: null
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
+  
+  
   reducers: {
     setUser: (state, action) => {
       state.currentUser = action.payload;
@@ -70,9 +73,11 @@ const userSlice = createSlice({
         state.isAuth = action.payload.isAuth;
         if (action.payload.isAuth) {
           state.user = action.payload.user;
+          state.isAdmin = action.payload.isAdmin;
           state.token = action.payload.token;
         }
-      });
+      })
+
   }
 });
 

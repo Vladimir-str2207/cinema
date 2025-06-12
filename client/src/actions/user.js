@@ -46,9 +46,11 @@ export const auth = createAsyncThunk("user/auth", async (_, { dispatch }) => {
       headers: { Authorization: `Bearer ${token}` },
     });
 
+
     return {
       isAuth: true,
       user: response.data.user,
+      isAdmin:response.data.roles[0] === 'admin',
       token,
     };
   } catch (error) {
@@ -56,3 +58,22 @@ export const auth = createAsyncThunk("user/auth", async (_, { dispatch }) => {
     return { isAuth: false };
   }
 });
+
+export const admin = createAsyncThunk(
+  "user/admin",
+  async (_, { rejectWithValue }) => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/user`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if(response.data.roles["admin"]){
+        
+        return {isAdmin:true};
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

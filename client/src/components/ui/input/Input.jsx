@@ -1,13 +1,20 @@
 import React from "react";
 import "./input.css";
 
-const Input = (props) => {
+const Input = ({ value, setValue, type, placeholder }) => {
+  const handleChange = (e) => {
+    const val = type === 'number' 
+      ? parseInt(e.target.value) || 0 // Преобразуем в число
+      : e.target.value;
+    setValue(val);
+  };
+
   return (
     <input
-      onChange={(event) => props.setValue(event.target.value)}
-      value={props.value}
-      type={props.type}
-      placeholder={props.placeholder}
+      type={type}
+      value={value}
+      onChange={handleChange}
+      placeholder={placeholder}
     />
   );
 };

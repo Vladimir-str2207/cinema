@@ -4,6 +4,7 @@ import MovieCard from "../movieCard/MovieCard";
 import "./movieList.css";
 import { fetchMovies } from "../../../actions/film";
 
+
 const MovieList = () => {
   const dispatch = useDispatch();
   const { movies, loading, error } = useSelector((state) => state.films);
@@ -19,6 +20,7 @@ const MovieList = () => {
     <div className="movieList">
       <div className="movieList__list">
         {movies.length > 0 ? (
+          
           movies.map((movie) => <MovieCard key={movie._id} movie={movie} />)
         ) : (
           <p className="no-results">По вашему запросу ничего не найдено...</p>

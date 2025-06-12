@@ -6,12 +6,13 @@ import { logout } from "../../../reducers/userReducer";
 import { fetchMovies, searchMovies } from "../../../actions/film";
 
 const Navbar = () => {
-  const isAuth = useSelector((state) => state.user.isAuth);
+  const { isAuth, isAdmin } = useSelector((state) => state.user);
   const { movies } = useSelector((state) => state.films);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(false);
 
   const dispatch = useDispatch();
+  console.log(isAdmin);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -50,25 +51,28 @@ const Navbar = () => {
           />
         )}
         <div className="navbar__auth">
-        {!isAuth && (
-          <div className="navbar__login">
-            <NavLink to="/">Войти</NavLink>
-          </div>
-        )}
+          {!isAuth && (
+            <div className="navbar__login">
+              <NavLink to="/">Войти</NavLink>
+            </div>
+          )}
 
-        {!isAuth && (
-          <div className="navbar__registration">
-            <NavLink to="/registration">Регистрация</NavLink>
-          </div>
-        )}
-                {isAuth && (
-          <div className="navbar__login" onClick={() => dispatch(logout())}>
-            Выход
-          </div>
-        )}
+          {!isAuth && (
+            <div className="navbar__registration">
+              <NavLink to="/registration">Регистрация</NavLink>
+            </div>
+          )}
+          {isAuth && isAdmin && (
+            <div className="navbar__admin" >
+              <NavLink to="/adminPanel">Админ</NavLink>
+            </div>
+          )}
+          {isAuth && (
+            <div className="navbar__login" onClick={() => dispatch(logout())}>
+              Выход
+            </div>
+          )}
         </div>
-
-
       </div>
     </div>
   );

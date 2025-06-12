@@ -3,15 +3,16 @@ import "./app.css";
 import Navbar from "./components/ui/navbar/Navbar";
 import Home from "./components/pages/Home/Home";
 import MovieDetails from "./components/pages/movieDetails/MovieDetails";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {  Navigate, Route, Routes } from "react-router-dom";
 import Registration from "./components/authorization/Registration";
 import Login from "./components/authorization/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../src/actions/user";
 import MovieList from "./components/pages/movieList/MovieList";
+import AdminPanel from "./components/pages/adminPanel/AdminPanel";
 
 function App() {
-  const isAuth = useSelector((state) => state.user.isAuth);
+  const {isAuth, isAdmin} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
             path="/login"
             element={isAuth ? <Navigate to="/" replace /> : <Login />}
           />
+          <Route path="/adminPanel" element={<AdminPanel/> } />
           <Route
             path="/"
             element={isAuth ? <Home /> : <Navigate to="/login" replace />}
@@ -39,7 +41,7 @@ function App() {
             }
           />
           <Route path="/movie" element={<Navigate to="/" replace />} />
-
+          
           <Route
             path="*"
             element={isAuth ? <MovieList /> : <Navigate to="/login" replace />}
